@@ -5,11 +5,11 @@
     android:id="@+id/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/navy"
+    android:background="@color/white"
     tools:context=".auth.LoginActivity">
 
     <TextView
-        android:id="@+id/sibisa"
+        android:id="@+id/sibisa_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -17,72 +17,79 @@
         android:text="@string/sibisa"
         android:textAppearance="@style/sibisa_login"
         android:fontFamily="@font/inter_bold"
-        android:textColor="@color/cream"
+        android:textColor="@color/navy"
         android:textSize="32sp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/rectangle_2"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="40dp"
         android:layout_centerInParent="true"
-        android:background="@drawable/rectangle"
-        android:elevation="6dp">
+        android:background="@drawable/cardview_register"
+        app:cardCornerRadius="40dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_gravity="center_vertical"
+            android:orientation="vertical"
             android:padding="24dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/email"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="20sp"
-
                 android:layout_marginTop="20dp"
-                android:textColor="@color/navy"/>
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/name"
+
+                android:textColor="@color/navy"
+                android:textSize="20sp" />
 
             <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ET_name_register"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/edittext_style"/>
+                android:background="@drawable/edittext_style" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/password"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto_medium"
-                android:textSize="20sp"
-                android:layout_marginTop="35dp"
-                android:textColor="@color/navy"/>
+                android:text="@string/email"
 
-            <EditText
+                android:textColor="@color/navy"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ET_email_register"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/edittext_style"/>
+                android:background="@drawable/edittext_style" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/password"
+                android:textColor="@color/navy"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ET_password_register"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_style" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="35dp"
-                android:text="@string/login"
-                android:textColor="@color/cream"
-                android:background="@drawable/corner_button_navy"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="200dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="35dp"
-                android:text="Register"
                 android:background="@drawable/corner_button_cream"
-                android:textColor="@color/navy"/>
-
+                android:text="@string/login"
+                android:textColor="@color/navy" />
 
         </LinearLayout>
 
