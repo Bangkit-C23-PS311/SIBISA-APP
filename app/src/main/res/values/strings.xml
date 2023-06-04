@@ -7,5 +7,6 @@
     <string name="name">Name</string>
     <string name="register_button">Create an Account</string>
     <string name="register">Register</string>
+    <string name="halo_username">Halo, Paul</string>
 
 </resources>
