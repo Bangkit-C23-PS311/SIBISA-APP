@@ -20,14 +20,15 @@
             android:layout_height="wrap_content"
             android:textColor="@color/navy"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"/>
 
         <ImageButton
             android:id="@+id/logoutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="16dp"
             android:src="@drawable/ic_baseline_logout_24"
             android:background="?attr/selectableItemBackgroundBorderless" />
 
@@ -36,9 +37,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_below="@id/toolbar">
 
-        <SearchView
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -46,3 +48,4 @@
     </LinearLayout>
 
 </RelativeLayout>
+
