@@ -65,6 +65,7 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/ET_email_register"
                 android:layout_width="match_parent"
+                android:inputType="textEmailAddress"
                 android:layout_height="50dp"
                 android:background="@drawable/edittext_style" />
 
@@ -81,6 +82,7 @@
                 android:id="@+id/ET_password_register"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:inputType="textPassword"
                 android:background="@drawable/edittext_style" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -92,6 +94,13 @@
                 android:background="@drawable/corner_button_cream"
                 android:text="@string/register_button"
                 android:textColor="@color/navy" />
+
+            <ProgressBar
+                android:id="@+id/pb_regis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_gravity="center"/>
 
         </LinearLayout>
 
