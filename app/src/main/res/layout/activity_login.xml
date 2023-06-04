@@ -47,6 +47,7 @@
                 android:textColor="@color/navy"/>
 
             <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_email_login"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/edittext_style"/>
@@ -60,12 +61,14 @@
                 android:layout_marginTop="35dp"
                 android:textColor="@color/navy"/>
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_password_login"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/edittext_style"/>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_login"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -75,11 +78,12 @@
                 android:background="@drawable/corner_button_navy"/>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_register"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="35dp"
-                android:text="Register"
+                android:text="@string/register"
                 android:background="@drawable/corner_button_cream"
                 android:textColor="@color/navy"/>
 
