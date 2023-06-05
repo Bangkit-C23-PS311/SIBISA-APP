@@ -1,7 +1,7 @@
 package com.coding.sibisa.auth
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.coding.sibisa.R
 
 class RegisterActivity : AppCompatActivity() {

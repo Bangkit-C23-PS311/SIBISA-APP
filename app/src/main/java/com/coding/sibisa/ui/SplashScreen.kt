@@ -1,18 +1,20 @@
 package com.coding.sibisa.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.coding.sibisa.R
+import androidx.appcompat.app.AppCompatActivity
 import com.coding.sibisa.auth.LoginActivity
+import com.coding.sibisa.databinding.ActivitySplashScreenBinding
 
 class SplashScreen : AppCompatActivity() {
+    private lateinit var binding: ActivitySplashScreenBinding
     private val SPLASH_SCREEN_DURATION = 5000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen)
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         Handler().postDelayed({
             val intent = Intent(this@SplashScreen, LoginActivity::class.java)
