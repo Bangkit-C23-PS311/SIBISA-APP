@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.coding.sibisa.R
 import com.coding.sibisa.databinding.ActivityLoginBinding
+import com.coding.sibisa.ui.MainActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -13,8 +14,16 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Login()
         setUpRegister()
 
+    }
+
+    private fun Login() {
+        binding.buttonLogin.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setUpRegister() {

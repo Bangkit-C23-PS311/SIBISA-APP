@@ -55,25 +55,32 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/imageSlider"
-        android:layout_below="@id/search_bar_layout"
         android:layout_width="300dp"
         android:layout_height="155dp"
+        android:layout_below="@id/search_bar_layout"
+        android:layout_centerInParent="true"
         android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/imageslider"
-        android:layout_centerInParent="true" />
+        android:background="@drawable/imageslider" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@id/imageSlider"
-        android:background="@color/white"
-        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
         app:tabMode="fixed"
-        app:tabGravity="center">
+        app:tabIndicatorGravity="stretch"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabSelectedTextColor="@color/white"
+        app:tabIndicatorColor="@null"
+        app:tabIndicator="@drawable/tab_indicator"/>
 
-    </com.google.android.material.tabs.TabLayout>
-
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tab_layout"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>
 
