@@ -66,21 +66,21 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
         android:layout_below="@id/imageSlider"
-        android:layout_centerHorizontal="true"
-        app:tabMode="fixed"
-        app:tabIndicatorGravity="stretch"
+        android:layout_marginTop="40dp"
+        app:tabIndicator="@drawable/tab_indicator"
         app:tabIndicatorAnimationMode="elastic"
-        app:tabSelectedTextColor="@color/white"
         app:tabIndicatorColor="@null"
-        app:tabIndicator="@drawable/tab_indicator"/>
+        app:tabIndicatorGravity="stretch"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/white" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpager2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/tab_layout"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"/>
 </RelativeLayout>
 

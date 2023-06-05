@@ -8,7 +8,13 @@
     <string name="register_button">Create an Account</string>
     <string name="register">Register</string>
     <string name="halo_username">Halo, Paul</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="belajar_huruf">Belajar Huruf</string>
+    <string name="card_desc">Mulai belajar huruf hari ini!</string>
+    <string name="belajar_kata">Belajar Kata</string>
+    <string name="desc_kata">Mulai belajar kata hari ini!</string>
+    <string name="latihan">Latihan</string>
+    <string name="desc_latihan">Mulai Latihan bahasa isyarat Hari ini!</string>
 
 </resources>
