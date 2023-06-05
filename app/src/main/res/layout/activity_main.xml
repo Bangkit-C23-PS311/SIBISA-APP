@@ -69,18 +69,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/imageSlider"
         android:background="@color/white"
+        android:layout_marginTop="30dp"
         app:tabMode="fixed"
         app:tabGravity="center">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Materi" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Latihan" />
 
     </com.google.android.material.tabs.TabLayout>
 

@@ -50,7 +50,8 @@
                 android:id="@+id/ET_name_register"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/edittext_style" />
+                android:background="@drawable/edittext_style"
+                android:fontFamily="@font/inter_semibold"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,7 +67,8 @@
                 android:id="@+id/ET_email_register"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/edittext_style" />
+                android:background="@drawable/edittext_style"
+                android:fontFamily="@font/inter_semibold"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,7 +83,8 @@
                 android:id="@+id/ET_password_register"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/edittext_style" />
+                android:background="@drawable/edittext_style"
+                android:fontFamily="@font/inter_semibold"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_create"
