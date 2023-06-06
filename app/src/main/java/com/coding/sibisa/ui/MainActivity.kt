@@ -1,9 +1,7 @@
 package com.coding.sibisa.ui
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.coding.sibisa.R
 import com.coding.sibisa.ui.fragment.FragmentAdapter

@@ -3,7 +3,6 @@ package com.coding.sibisa.auth
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.coding.sibisa.R
 import com.coding.sibisa.databinding.ActivityLoginBinding
 import com.coding.sibisa.ui.MainActivity
 
@@ -14,12 +13,12 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Login()
+        login()
         setUpRegister()
 
     }
 
-    private fun Login() {
+    private fun login() {
         binding.buttonLogin.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
