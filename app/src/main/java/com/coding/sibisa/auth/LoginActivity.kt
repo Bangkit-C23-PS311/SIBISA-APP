@@ -6,6 +6,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+
 import androidx.datastore.core.DataStore
 import androidx.datastore.dataStore
 import androidx.datastore.preferences.core.Preferences
@@ -17,6 +18,7 @@ import com.coding.sibisa.data.pref.Compact
 import com.coding.sibisa.data.pref.UserPreference
 import com.coding.sibisa.data.response.MyUser
 import com.coding.sibisa.data.response.User
+
 import com.coding.sibisa.databinding.ActivityLoginBinding
 import com.coding.sibisa.ui.MainActivity
 
@@ -31,9 +33,11 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         vmFactory = VMFactory.getInstance(this)
         authVM = ViewModelProvider(this,vmFactory)[AuthVM::class.java]
 
+        login()
         setUpRegister()
         SetUpView()
 
@@ -85,6 +89,12 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 View.GONE
             }
+
+    private fun login() {
+        binding.buttonLogin.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+
         }
     }
 

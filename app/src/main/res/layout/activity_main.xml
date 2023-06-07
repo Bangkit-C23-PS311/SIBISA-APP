@@ -55,34 +55,44 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/imageSlider"
-        android:layout_below="@id/search_bar_layout"
         android:layout_width="300dp"
         android:layout_height="155dp"
+        android:layout_below="@id/search_bar_layout"
+        android:layout_centerInParent="true"
         android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/imageslider"
-        android:layout_centerInParent="true" />
+        android:background="@drawable/imageslider" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@id/imageSlider"
-        android:background="@color/white"
+        android:layout_marginTop="40dp"
+        app:tabIndicator="@drawable/tab_indicator"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorColor="@null"
+        app:tabIndicatorGravity="stretch"
         app:tabMode="fixed"
-        app:tabGravity="center">
+        app:tabSelectedTextColor="@color/white" />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Materi" />
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tab_layout"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"/>
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Latihan" />
-
-    </com.google.android.material.tabs.TabLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        app:elevation="8dp"
+        app:itemIconSize="40dp"
+        app:itemIconTint="@color/icon_color_selector"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/bottom_navigation_bar" />
 
 </RelativeLayout>
 
