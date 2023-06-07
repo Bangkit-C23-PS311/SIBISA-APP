@@ -14,15 +14,20 @@ data class LoginResponse(
 	val status: String? = null
 )
 
-data class Data(
+data class User(
 
-	@field:SerializedName("user")
-	val user: User? = null,
+	@field:SerializedName("name")
+	val name: String? = null,
+
+	@field:SerializedName("id")
+	val id: Int? = null,
+
+	@field:SerializedName("email")
+	val email: String? = null,
 
 	@field:SerializedName("token")
 	val token: String? = null
 )
-
 data class ParamLogin(
 	@SerializedName("email")
 	val email: String,
@@ -30,20 +35,22 @@ data class ParamLogin(
 	val password: String,
 )
 
-data class User(
+data class Data(
 
-	@field:SerializedName("updated_at")
-	val updatedAt: String? = null,
+	@field:SerializedName("user")
+	val user: User? = null
+)
+
+
+data class MyUser(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
-	@field:SerializedName("created_at")
-	val createdAt: String? = null,
+	@field:SerializedName("isLogin")
+	val isLogin: Boolean,
 
-	@field:SerializedName("id")
-	val id: Int? = null,
-
-	@field:SerializedName("email")
-	val email: String? = null
+	@field:SerializedName("token")
+	val token: String
 )
+
