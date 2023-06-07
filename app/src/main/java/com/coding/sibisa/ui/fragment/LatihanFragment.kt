@@ -1,11 +1,14 @@
 package com.coding.sibisa.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
 import com.coding.sibisa.R
+import com.coding.sibisa.ui.LatihanActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +39,22 @@ class LatihanFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_latihan, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        intentToLatihan()
+    }
+
+    private fun intentToLatihan() {
+        val cvLatihan = view?.findViewById<CardView>(R.id.cv_latihan)
+
+        cvLatihan?.setOnClickListener {
+            val intent = Intent(requireContext(), LatihanActivity::class.java)
+            startActivity(intent)
+
+        }
     }
 
     companion object {

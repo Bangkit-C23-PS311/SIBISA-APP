@@ -13,17 +13,19 @@ import com.coding.sibisa.data.model.AuthVM
 import com.coding.sibisa.data.model.MainVM
 import com.coding.sibisa.data.model.VMFactory
 import com.coding.sibisa.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var  authVM: AuthVM
+    private lateinit var authVM: AuthVM
     private lateinit var vmFactory: VMFactory
     private lateinit var mainVM: MainVM
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager2: ViewPager2
     private lateinit var adapter: FragmentAdapter
+    private lateinit var bottomBar: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         tabLayout = findViewById(R.id.tab_layout)
         viewPager2 = findViewById(R.id.viewpager2)
+        bottomBar = findViewById(R.id.bottom_navbar)
 
         adapter = FragmentAdapter(supportFragmentManager, lifecycle)
         tabLayout.addTab(tabLayout.newTab().setText("Materi"))
@@ -45,9 +48,9 @@ class MainActivity : AppCompatActivity() {
 
         logout()
 
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                if (tab != null){
+                if (tab != null) {
                     viewPager2.currentItem = tab.position
                 }
             }
@@ -62,14 +65,29 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 tabLayout.selectTab(tabLayout.getTabAt(position))
             }
         })
 
+        bottomBar.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.profile -> {
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.home -> {
+                    true
+                }
+
+                else -> false
+            }
+        }
     }
+
 
     private fun logout() {
         binding.logoutButton.setOnClickListener {
