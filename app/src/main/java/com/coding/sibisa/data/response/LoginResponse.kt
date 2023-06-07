@@ -1,6 +1,8 @@
 package com.coding.sibisa.data.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class LoginResponse(
 
@@ -13,7 +15,7 @@ data class LoginResponse(
 	@field:SerializedName("status")
 	val status: String? = null
 )
-
+@Parcelize
 data class User(
 
 	@field:SerializedName("name")
@@ -27,7 +29,7 @@ data class User(
 
 	@field:SerializedName("token")
 	val token: String? = null
-)
+):Parcelable
 data class ParamLogin(
 	@SerializedName("email")
 	val email: String,
