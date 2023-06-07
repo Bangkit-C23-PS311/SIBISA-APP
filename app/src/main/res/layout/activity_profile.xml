@@ -1,9 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.ProfileActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_back_profile"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="24dp"
+        android:gravity="center"
+        android:background="@drawable/back_button"
+        android:drawableStart="@drawable/ic_arrow_back"
+        android:paddingStart="10dp"
+        android:paddingEnd="8dp"/>
+    
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_profile"
+        android:layout_width="235dp"
+        android:layout_height="250dp"
+        android:layout_below="@id/btn_back_profile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:elevation="8dp"
+        android:src="@drawable/ic_account_circle" />
+
+    <TextView
+        android:id="@+id/profile_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_profile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="Paul"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="40sp"
+        android:textColor="@color/navy" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout_profile"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/profile_username"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        app:tabIndicator="@drawable/tab_indicator_profile"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorColor="@null"
+        app:tabIndicatorGravity="stretch"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/cream" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager2_profile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tab_layout_profile"
+        android:layout_centerHorizontal="true"
+        android:background="@color/navy"/>
+
+
+</RelativeLayout>
