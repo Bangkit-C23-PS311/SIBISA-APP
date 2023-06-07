@@ -2,7 +2,6 @@ package com.coding.sibisa.data.model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.coding.sibisa.data.pref.UserPreference
 import com.coding.sibisa.data.response.MyUser
 import com.coding.sibisa.repo.Repository
 import kotlinx.coroutines.launch

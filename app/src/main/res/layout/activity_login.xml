@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/edittext_style"
-                android:fontFamily="@font/inter_semibold"/>
+                android:fontFamily="sans-serif"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,7 +67,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/edittext_style"
-                android:fontFamily="@font/inter_semibold"/>
+                android:fontFamily="sans-serif"
+                android:inputType="textPassword"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_login"
@@ -89,10 +90,14 @@
                 android:background="@drawable/corner_button_cream"
                 android:textColor="@color/navy"/>
 
-            
         </LinearLayout>
 
-
     </androidx.cardview.widget.CardView>
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/pbLogin"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>

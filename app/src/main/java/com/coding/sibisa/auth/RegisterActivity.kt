@@ -6,11 +6,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.coding.sibisa.R
 import com.coding.sibisa.data.model.AuthVM
 import com.coding.sibisa.data.model.VMFactory
 import com.coding.sibisa.data.pref.Compact
-import com.coding.sibisa.databinding.ActivityLoginBinding
 import com.coding.sibisa.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {

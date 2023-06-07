@@ -3,11 +3,12 @@ package com.coding.sibisa.data.pref
 
 import android.content.Context
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.*
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.coding.sibisa.data.response.Data
 import com.coding.sibisa.data.response.MyUser
-import com.coding.sibisa.data.response.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

@@ -6,19 +6,11 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
-import androidx.datastore.core.DataStore
-import androidx.datastore.dataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.coding.sibisa.data.model.AuthVM
 import com.coding.sibisa.data.model.VMFactory
 import com.coding.sibisa.data.pref.Compact
-import com.coding.sibisa.data.pref.UserPreference
 import com.coding.sibisa.data.response.MyUser
-import com.coding.sibisa.data.response.User
-
 import com.coding.sibisa.databinding.ActivityLoginBinding
 import com.coding.sibisa.ui.MainActivity
 
@@ -35,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         vmFactory = VMFactory.getInstance(this)
-        authVM = ViewModelProvider(this,vmFactory)[AuthVM::class.java]
+        authVM = ViewModelProvider(this, vmFactory)[AuthVM::class.java]
 
         login()
         setUpRegister()
@@ -47,10 +39,10 @@ class LoginActivity : AppCompatActivity() {
         binding.buttonLogin.setOnClickListener {
             val email = binding.etEmailLogin.text.toString()
             val pass = binding.etPasswordLogin.text.toString()
-            if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass)){
-                authVM.getLogin(email, pass).observe(this){
-                    if (it != null){
-                        when(it){
+            if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass)) {
+                authVM.getLogin(email, pass).observe(this) {
+                    if (it != null) {
+                        when (it) {
                             is Compact.Succes -> {
                                 showLoading(false)
                                 val result = it.data
@@ -82,16 +74,8 @@ class LoginActivity : AppCompatActivity() {
         authVM.saveMyUser(myUser)
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        binding.pbLogin.apply {
-            visibility = if (isLoading) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
-
     private fun login() {
-        binding.buttonLogin.setOnClickListener{
+        binding.buttonLogin.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
 
@@ -99,9 +83,19 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setUpRegister() {
-        binding.buttonRegister.setOnClickListener{
+        binding.buttonRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.pbLogin.apply {
+            visibility = if (isLoading) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
         }
     }
 }

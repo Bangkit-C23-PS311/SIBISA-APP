@@ -1,7 +1,6 @@
 package com.coding.sibisa.data.api
 
 import com.coding.sibisa.data.response.LoginResponse
-import com.coding.sibisa.data.response.ParamLogin
 import com.coding.sibisa.data.response.ParamRegister
 import com.coding.sibisa.data.response.RegisterResponse
 import retrofit2.http.Body

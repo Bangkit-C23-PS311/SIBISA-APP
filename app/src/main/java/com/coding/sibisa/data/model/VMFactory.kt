@@ -1,13 +1,10 @@
 package com.coding.sibisa.data.model
 
 import android.content.Context
-import androidx.datastore.core.DataStore
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.coding.sibisa.data.pref.UserPreference
 import com.coding.sibisa.di.Injection
 import com.coding.sibisa.repo.Repository
-import kotlin.properties.ReadOnlyProperty
 
 class VMFactory(private val repo: Repository): ViewModelProvider.NewInstanceFactory()  {
 
