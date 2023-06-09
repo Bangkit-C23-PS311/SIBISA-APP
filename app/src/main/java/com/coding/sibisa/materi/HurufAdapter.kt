@@ -11,7 +11,7 @@ import com.coding.sibisa.R
 
 class HurufAdapter(var context: Context) : RecyclerView.Adapter<HurufAdapter.ViewHolder>() {
 
-    var dataList = emptyList<HurufDataModel>()
+    private var dataList = emptyList<HurufDataModel>()
 
     internal fun setDataList(dataList: List<HurufDataModel>){
         this.dataList = dataList
