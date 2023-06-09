@@ -34,7 +34,7 @@
         android:id="@+id/iv_detail"
         android:layout_width="350dp"
         android:layout_height="250dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="40dp"
         android:layout_below="@id/title_detail"
         android:layout_centerHorizontal="true"
         android:background="@drawable/imageslider"
