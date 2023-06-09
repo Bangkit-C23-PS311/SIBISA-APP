@@ -50,8 +50,8 @@
                 android:id="@+id/et_email_login"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/edittext_style"
-                android:fontFamily="sans-serif"/>
+                android:inputType="textEmailAddress"
+                android:background="@drawable/edittext_style"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,9 +66,8 @@
                 android:id="@+id/et_password_login"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/edittext_style"
-                android:fontFamily="sans-serif"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:background="@drawable/edittext_style"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_login"
@@ -90,14 +89,17 @@
                 android:background="@drawable/corner_button_cream"
                 android:textColor="@color/navy"/>
 
+            <ProgressBar
+                android:id="@+id/pb_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_gravity="center"/>
+
+            
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
 
-    <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/pbLogin"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_centerInParent="true"/>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
