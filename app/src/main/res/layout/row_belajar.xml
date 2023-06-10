@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragment.LatihanFragment">
+    tools:context=".ui.fragment.MateriFragment">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_latihan"
-        android:layout_width="300dp"
+        android:id="@+id/cv_huruf"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="20dp"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
@@ -17,6 +19,7 @@
         app:cardElevation="8dp">
 
         <LinearLayout
+            android:id="@+id/linear_huruf"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -31,42 +34,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginStart="12dp">
+                android:layout_marginStart="16dp">
 
                 <TextView
-                    android:id="@+id/tv_judullat"
+                    android:id="@+id/judul"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/latihan"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/belajar_huruf"
                     android:fontFamily="@font/inter_bold"
                     android:textColor="@color/navy"
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/tv_katalat"
+                    android:id="@+id/tv_tagline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="@string/desc_latihan"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/card_desc"
                     android:fontFamily="sans-serif-medium"
                     android:textColor="@color/dark_grey"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/tv_waktulat"
+                    android:id="@+id/tv_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="8dp"
                     android:text="30 Menit"
                     android:fontFamily="sans-serif-medium"
                     android:textColor="@color/dark_grey"
                     android:textSize="12sp" />
 
+
+
             </LinearLayout>
 
         </LinearLayout>
 
+
     </com.google.android.material.card.MaterialCardView>
 
-</FrameLayout>
+
+</LinearLayout>

@@ -7,108 +7,139 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.MateriFragment">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_huruf"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        app:cardCornerRadius="20dp"
-        android:elevation="4dp"
-        app:cardElevation="8dp">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_fragment_materi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-        <LinearLayout
-            android:id="@+id/linear_huruf"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:padding="10dp">
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:id="@+id/cv_huruf"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="40dp"-->
+<!--        app:cardCornerRadius="20dp"-->
+<!--        android:elevation="4dp"-->
+<!--        app:cardElevation="8dp">-->
 
-            <ImageView
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:src="@drawable/ic_baseline_local_library_24" />
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linear_huruf"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:padding="10dp">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginStart="16dp">
+<!--            <ImageView-->
+<!--                android:layout_width="75dp"-->
+<!--                android:layout_height="75dp"-->
+<!--                android:src="@drawable/ic_baseline_local_library_24" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/belajar_huruf"
-                    android:fontFamily="@font/inter_bold"
-                    android:textColor="@color/navy"
-                    android:textSize="16sp" />
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_marginStart="16dp">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/card_desc"
-                    android:fontFamily="sans-serif-medium"
-                    android:textColor="@color/dark_grey"
-                    android:textSize="12sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/judul"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:text="@string/belajar_huruf"-->
+<!--                    android:fontFamily="@font/inter_bold"-->
+<!--                    android:textColor="@color/navy"-->
+<!--                    android:textSize="16sp" />-->
 
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_tagline"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="@string/card_desc"-->
+<!--                    android:fontFamily="sans-serif-medium"-->
+<!--                    android:textColor="@color/dark_grey"-->
+<!--                    android:textSize="12sp" />-->
 
-        </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_time"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="30 Menit"-->
+<!--                    android:fontFamily="sans-serif-medium"-->
+<!--                    android:textColor="@color/dark_grey"-->
+<!--                    android:textSize="12sp" />-->
 
 
-    </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_kata"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        app:cardCornerRadius="20dp"
-        android:elevation="4dp"
-        app:cardElevation="8dp">
+<!--            </LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:padding="10dp">
+<!--        </LinearLayout>-->
 
-            <ImageView
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:src="@drawable/ic_baseline_local_library_24" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginStart="16dp">
+<!--    </com.google.android.material.card.MaterialCardView>-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/belajar_kata"
-                    android:fontFamily="@font/inter_bold"
-                    android:textColor="@color/navy"
-                    android:textSize="16sp" />
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:id="@+id/cv_kata"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="40dp"-->
+<!--        app:cardCornerRadius="20dp"-->
+<!--        android:elevation="4dp"-->
+<!--        app:cardElevation="8dp">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/desc_kata"
-                    android:fontFamily="sans-serif-medium"
-                    android:textColor="@color/dark_grey"
-                    android:textSize="12sp" />
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:padding="10dp">-->
 
-            </LinearLayout>
+<!--            <ImageView-->
+<!--                android:layout_width="75dp"-->
+<!--                android:layout_height="75dp"-->
+<!--                android:src="@drawable/ic_baseline_local_library_24" />-->
 
-        </LinearLayout>
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_marginStart="16dp">-->
 
-    </com.google.android.material.card.MaterialCardView>
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_judulkata"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:text="@string/belajar_kata"-->
+<!--                    android:fontFamily="@font/inter_bold"-->
+<!--                    android:textColor="@color/navy"-->
+<!--                    android:textSize="16sp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_taglinekata"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="@string/desc_kata"-->
+<!--                    android:fontFamily="sans-serif-medium"-->
+<!--                    android:textColor="@color/dark_grey"-->
+<!--                    android:textSize="12sp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_timekata"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="120 Menit"-->
+<!--                    android:fontFamily="sans-serif-medium"-->
+<!--                    android:textColor="@color/dark_grey"-->
+<!--                    android:textSize="12sp" />-->
+
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--    </com.google.android.material.card.MaterialCardView>-->
 
 </LinearLayout>

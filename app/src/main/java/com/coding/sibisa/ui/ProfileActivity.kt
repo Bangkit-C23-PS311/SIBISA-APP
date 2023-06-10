@@ -1,7 +1,10 @@
 package com.coding.sibisa.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.viewpager2.widget.ViewPager2
 import com.coding.sibisa.R
 import com.coding.sibisa.ui.fragment.FragmentAdapter
@@ -12,6 +15,7 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var tabLayoutProfile: TabLayout
     private lateinit var viewPager2Profile: ViewPager2
     private lateinit var adapterProfile: FragmentAdapter
+    private lateinit var backButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +23,8 @@ class ProfileActivity : AppCompatActivity() {
 
         tabLayoutProfile = findViewById(R.id.tab_layout_profile)
         viewPager2Profile = findViewById(R.id.viewpager2_profile)
-        adapterProfile = FragmentAdapter(supportFragmentManager, lifecycle)
+        backButton = findViewById(R.id.btn_back_profile)
+
 
         tabLayoutProfile.addTab(tabLayoutProfile.newTab().setText("Progres Belajar"))
         tabLayoutProfile.addTab(tabLayoutProfile.newTab().setText("Profil"))
@@ -47,6 +52,11 @@ class ProfileActivity : AppCompatActivity() {
                 tabLayoutProfile.selectTab(tabLayoutProfile.getTabAt(position))
             }
         })
+
+        backButton.setOnClickListener{
+            intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
