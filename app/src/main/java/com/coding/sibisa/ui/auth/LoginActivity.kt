@@ -1,4 +1,4 @@
-package com.coding.sibisa.auth
+package com.coding.sibisa.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -55,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
                                 )
                                 val i = Intent(this, MainActivity::class.java)
                                 startActivity(i)
-                                Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "Login Berhasil ", Toast.LENGTH_SHORT).show()
                                 finish()
                             }
                             is Compact.Error -> {

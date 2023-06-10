@@ -1,10 +1,12 @@
 package com.coding.sibisa.data.model
 
 import android.content.Context
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.coding.sibisa.di.Injection
-import com.coding.sibisa.repo.Repository
+import com.coding.sibisa.data.di.Injection
+import com.coding.sibisa.data.repo.Repository
+import com.coding.sibisa.ui.fragment.MateriFragment
 
 class VMFactory(private val repo: Repository): ViewModelProvider.NewInstanceFactory()  {
 
@@ -14,6 +16,12 @@ class VMFactory(private val repo: Repository): ViewModelProvider.NewInstanceFact
         fun getInstance(context: Context): VMFactory{
             return INSTANCE ?: synchronized(this){
                 INSTANCE ?: VMFactory(Injection.provider(context))
+            }.also { INSTANCE = it }
+        }
+
+        fun getInstanceFragment(fragment: Fragment): VMFactory{
+            return INSTANCE ?: synchronized(this){
+                INSTANCE ?: VMFactory(Injection.provider(fragment.requireContext()))
             }.also { INSTANCE = it }
         }
     }

@@ -1,13 +1,17 @@
 package com.coding.sibisa.data.api
 
+import com.coding.sibisa.data.response.CategoryResponse
 import com.coding.sibisa.data.response.LoginResponse
 import com.coding.sibisa.data.response.ParamRegister
 import com.coding.sibisa.data.response.RegisterResponse
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -23,4 +27,9 @@ interface ApiService {
     suspend fun register(
         @Body req: ParamRegister
     ):RegisterResponse
+
+    @GET("category")
+     fun category(
+        @Header("Authorization") token: String,
+    ): CategoryResponse
 }

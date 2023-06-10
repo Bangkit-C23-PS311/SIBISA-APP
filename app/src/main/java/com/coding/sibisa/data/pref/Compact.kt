@@ -5,3 +5,6 @@ sealed class Compact<out R> private constructor(){
     data class Error(val error: String): Compact<Nothing>()
     object Loading: Compact<Nothing>()
 }
+
+
+

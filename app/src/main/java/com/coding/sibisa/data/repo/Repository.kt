@@ -1,4 +1,4 @@
-package com.coding.sibisa.repo
+package com.coding.sibisa.data.repo
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -51,6 +51,16 @@ class Repository(private val pref: UserPreference, private val api: ApiService) 
 
     suspend fun logout(){
         pref.logout()
+    }
+
+    fun getCategory(token: String): LiveData<Compact<CategoryResponse>> = liveData{
+       emit(Compact.Loading)
+        try {
+            val result = api.category("Bearer ${token}")
+            emit(Compact.Succes(result))
+        }catch (exc: Exception){
+            emit(Compact.Error(exc.message.toString()))
+        }
     }
 
     fun myUser(): LiveData<MyUser>{

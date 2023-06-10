@@ -6,7 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.coding.sibisa.auth.LoginActivity
+import com.coding.sibisa.ui.auth.LoginActivity
 import com.coding.sibisa.data.model.AuthVM
 import com.coding.sibisa.data.model.MainVM
 import com.coding.sibisa.data.model.VMFactory
