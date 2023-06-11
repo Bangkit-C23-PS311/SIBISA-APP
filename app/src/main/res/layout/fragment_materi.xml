@@ -27,7 +27,7 @@
             <ImageView
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:src="@drawable/ic_baseline_local_library_24" />
+                android:src="@drawable/az" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -79,7 +79,7 @@
             <ImageView
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:src="@drawable/ic_baseline_local_library_24" />
+                android:src="@drawable/kata" />
 
             <LinearLayout
                 android:layout_width="match_parent"
