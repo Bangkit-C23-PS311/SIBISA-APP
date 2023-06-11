@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DetailActivity">
+    tools:context=".ui.belajarhuruf.DetailActivity">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_back_detail"
@@ -44,10 +44,27 @@
         android:id="@+id/desc_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/navy"
         android:layout_below="@id/iv_detail"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
+
+    <Button
+        android:id="@+id/btn_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="28dp"
+        android:drawableStart="@drawable/camera_24"
+        android:drawablePadding="20dp"
+        android:text="Camera" />
 
 
 </RelativeLayout>

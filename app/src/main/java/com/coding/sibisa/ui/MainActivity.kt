@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewPager2: ViewPager2
     private lateinit var adapter: FragmentAdapter
     private lateinit var bottomBar: BottomNavigationView
+    private var token: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,12 +37,6 @@ class MainActivity : AppCompatActivity() {
         viewPager2 = findViewById(R.id.viewpager2)
         bottomBar = findViewById(R.id.bottom_navbar)
 
-        adapter = FragmentAdapter(supportFragmentManager, lifecycle)
-        tabLayout.addTab(tabLayout.newTab().setText("Materi"))
-        tabLayout.addTab(tabLayout.newTab().setText("Latihan"))
-
-        viewPager2.adapter = adapter
-
         vmFactory = VMFactory.getInstance(this)
         authVM = ViewModelProvider(this, vmFactory)[AuthVM::class.java]
         mainVM = ViewModelProvider(this, vmFactory)[MainVM::class.java]
@@ -51,6 +46,20 @@ class MainActivity : AppCompatActivity() {
                 binding.usernameTextView.text = "Hello, ${it.name}"
             }
         })
+
+        mainVM.getMyUser().observe(this, {
+            if (it != null){
+                binding.usernameTextView.text = "Hello, ${it.name}"
+            }
+        })
+
+        adapter = FragmentAdapter(supportFragmentManager, lifecycle)
+        tabLayout.addTab(tabLayout.newTab().setText("Materi"))
+        tabLayout.addTab(tabLayout.newTab().setText("Latihan"))
+
+        viewPager2.adapter = adapter
+
+
 
         logout()
 

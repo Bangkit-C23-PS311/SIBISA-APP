@@ -1,6 +1,8 @@
 package com.coding.sibisa.data.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class MaterialResponse(
 
@@ -14,6 +16,7 @@ data class MaterialResponse(
 	val status: String? = null
 )
 
+@Parcelize
 data class DataItemItem(
 
 	@field:SerializedName("category_id")
@@ -33,4 +36,4 @@ data class DataItemItem(
 
 	@field:SerializedName("class_model")
 	val classModel: String? = null
-)
+): Parcelable

@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import com.coding.sibisa.R
-import com.coding.sibisa.ui.BelajarHurufActivity
-import com.coding.sibisa.ui.BelajarKataActivity
+import com.coding.sibisa.ui.belajarhuruf.BelajarHurufActivity
+import com.coding.sibisa.ui.belajarkata.BelajarKataActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +59,7 @@ class MateriFragment : Fragment() {
 
         cardKata?.setOnClickListener{
             val intent = Intent(requireContext(), BelajarKataActivity::class.java)
+            intent.putExtra("itemId", 2)
             startActivity(intent)
         }
     }

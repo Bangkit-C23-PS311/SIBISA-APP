@@ -14,7 +14,7 @@ import com.coding.sibisa.R
 import com.coding.sibisa.data.response.DataItemItem
 import com.coding.sibisa.ui.belajarhuruf.DetailActivity
 
-class HurufAdapter(var context: Context) : RecyclerView.Adapter<HurufAdapter.ViewHolder>() {
+class KataAdapter(var context: Context) : RecyclerView.Adapter<KataAdapter.ViewHolder>() {
 
     private var dataList = emptyList<DataItemItem>()
 

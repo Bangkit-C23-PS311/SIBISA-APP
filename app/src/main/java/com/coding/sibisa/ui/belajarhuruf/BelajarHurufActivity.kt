@@ -1,4 +1,4 @@
-package com.coding.sibisa.ui
+package com.coding.sibisa.ui.belajarhuruf
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -17,13 +17,14 @@ import com.coding.sibisa.data.response.DataItemItem
 import com.coding.sibisa.databinding.ActivityBelajarHurufBinding
 import com.coding.sibisa.materi.HurufAdapter
 import com.coding.sibisa.materi.HurufDataModel
+import com.coding.sibisa.ui.MainActivity
 
 class BelajarHurufActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBelajarHurufBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var hurufAdapter: HurufAdapter
-    private var dataList = mutableListOf<HurufDataModel>()
+    private var dataList = mutableListOf<DataItemItem>()
     private lateinit var vmFactory: VMFactory
     private lateinit var mainVM: MainVM
 
@@ -64,7 +65,7 @@ class BelajarHurufActivity : AppCompatActivity() {
                                 dataResponse.forEach { dataItem ->
                                     val title = dataItem.title
                                     if (title != null) {
-                                        dataList.add(HurufDataModel(dataItem.title, dataItem.imageUrl))
+                                        dataList.add(dataItem)
                                     }
                                 }
 

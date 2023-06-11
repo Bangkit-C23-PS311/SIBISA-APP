@@ -18,7 +18,7 @@
         android:theme="@style/Theme.SIBISA"
         tools:targetApi="31">
         <activity
-            android:name=".DetailActivity"
+            android:name=".ui.belajarhuruf.DetailActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -28,10 +28,10 @@
             android:name=".ui.LatihanActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.BelajarKataActivity"
+            android:name=".ui.belajarkata.BelajarKataActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.BelajarHurufActivity"
+            android:name=".ui.belajarhuruf.BelajarHurufActivity"
             android:exported="false" />
         <activity
             android:name=".ui.ProfileActivity"
