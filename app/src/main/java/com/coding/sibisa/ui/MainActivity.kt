@@ -46,6 +46,12 @@ class MainActivity : AppCompatActivity() {
         authVM = ViewModelProvider(this, vmFactory)[AuthVM::class.java]
         mainVM = ViewModelProvider(this, vmFactory)[MainVM::class.java]
 
+        mainVM.getMyUser().observe(this, {
+            if(it != null){
+                binding.usernameTextView.text = "Hello, ${it.name}"
+            }
+        })
+
         logout()
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {

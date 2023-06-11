@@ -1,5 +1,6 @@
 package com.coding.sibisa.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.coding.sibisa.databinding.ActivityBelajarKataBinding
@@ -12,6 +13,12 @@ class BelajarKataActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityBelajarKataBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        binding.btnBackKata.setOnClickListener{
+            intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }

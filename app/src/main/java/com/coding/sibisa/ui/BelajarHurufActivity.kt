@@ -1,5 +1,6 @@
 package com.coding.sibisa.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -31,6 +32,12 @@ class BelajarHurufActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val categoryId = intent.getIntExtra("itemId", -1)
+
+
+        binding.btnBackHuruf.setOnClickListener{
+            intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         recyclerView = findViewById(R.id.rv_huruf)
         recyclerView.layoutManager = GridLayoutManager(applicationContext, 2)
