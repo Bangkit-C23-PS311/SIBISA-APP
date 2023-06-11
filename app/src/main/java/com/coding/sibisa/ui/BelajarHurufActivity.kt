@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -52,7 +53,7 @@ class BelajarHurufActivity : AppCompatActivity() {
                 if (result != null) {
                     when (result) {
                         is Compact.Loading -> {
-                            Log.d("BelajarHurufActivity", "loding")
+                            showLoading(true)
                         }
                         is Compact.Succes -> {
                             val categoriesData = result.data
@@ -68,12 +69,13 @@ class BelajarHurufActivity : AppCompatActivity() {
                                 }
 
                                 hurufAdapter.setDataList(dataList)
-
+                                showLoading(false)
                             }
                         }
                         is Compact.Error -> {
                             val errorMessage = result.error
                             Log.d("BelajarHurufActivity", "error: $errorMessage")
+                            showLoading(false)
                         }
                     }
                 }
@@ -90,5 +92,15 @@ class BelajarHurufActivity : AppCompatActivity() {
 
 
 
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.pbBelajar.apply {
+            visibility = if (isLoading) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+        }
     }
 }
