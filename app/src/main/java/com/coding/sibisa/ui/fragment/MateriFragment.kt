@@ -52,9 +52,6 @@ class MateriFragment : Fragment() {
         intentToCvHuruf()
         intentToCvKata()
 
-
-
-
     }
 
     private fun intentToCvKata() {
