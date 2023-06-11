@@ -2,33 +2,21 @@ package com.coding.sibisa.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.viewpager2.widget.ViewPager2
 import com.coding.sibisa.R
 import com.coding.sibisa.ui.fragment.FragmentAdapter
 import com.google.android.material.tabs.TabLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.coding.sibisa.ui.auth.LoginActivity
+import com.coding.sibisa.auth.LoginActivity
 import com.coding.sibisa.data.model.AuthVM
 import com.coding.sibisa.data.model.MainVM
 import com.coding.sibisa.data.model.VMFactory
-import com.coding.sibisa.data.pref.UserPreference
-import com.coding.sibisa.data.pref.dataStore
-import com.coding.sibisa.data.response.MyUser
 import com.coding.sibisa.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.firstOrNull
-import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
-
-    companion object {
-        const val TAG = "INMI"
-    }
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var authVM: AuthVM
@@ -38,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewPager2: ViewPager2
     private lateinit var adapter: FragmentAdapter
     private lateinit var bottomBar: BottomNavigationView
-    private var token: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,35 +36,17 @@ class MainActivity : AppCompatActivity() {
         viewPager2 = findViewById(R.id.viewpager2)
         bottomBar = findViewById(R.id.bottom_navbar)
 
-        val userPreference = UserPreference.getInstance(this.dataStore)
-
-        vmFactory = VMFactory.getInstance(this)
-        authVM = ViewModelProvider(this, vmFactory)[AuthVM::class.java]
-        mainVM = ViewModelProvider(this, vmFactory)[MainVM::class.java]
-
-        val coroutineScope = CoroutineScope(Dispatchers.Main)
-        coroutineScope.launch {
-            userPreference.getToken().firstOrNull()?.let {
-                binding.usernameTextView.text = "Hello, ${it.name}"
-                token = it.token
-                Log.d("Cek Toke", "Token = ${it.token}")
-            }
-
-        }
-
-
-        adapter = FragmentAdapter(supportFragmentManager, lifecycle, mainVM, token)
+        adapter = FragmentAdapter(supportFragmentManager, lifecycle)
         tabLayout.addTab(tabLayout.newTab().setText("Materi"))
         tabLayout.addTab(tabLayout.newTab().setText("Latihan"))
 
         viewPager2.adapter = adapter
 
-
+        vmFactory = VMFactory.getInstance(this)
+        authVM = ViewModelProvider(this, vmFactory)[AuthVM::class.java]
+        mainVM = ViewModelProvider(this, vmFactory)[MainVM::class.java]
 
         logout()
-
-
-
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -103,9 +72,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-
-
-
         bottomBar.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.profile -> {
@@ -120,8 +86,6 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
-
     }
 
 
