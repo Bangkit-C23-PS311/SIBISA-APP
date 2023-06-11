@@ -70,6 +70,7 @@ class MateriFragment : Fragment() {
         val cardHuruf = view?.findViewById<CardView>(R.id.cv_huruf)
         cardHuruf?.setOnClickListener {
             val intent = Intent(requireContext(), BelajarHurufActivity::class.java)
+            intent.putExtra("itemId", 1)
             startActivity(intent)
         }
     }

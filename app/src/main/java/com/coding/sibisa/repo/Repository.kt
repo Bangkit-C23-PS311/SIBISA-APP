@@ -60,4 +60,14 @@ class Repository(private val pref: UserPreference, private val api: ApiService) 
     suspend fun saveMyUser(myUser: MyUser){
         pref.saveToken(myUser)
     }
+
+    fun getMaterial(token: String, categoryId: Int): LiveData<Compact<MaterialResponse>> = liveData{
+        emit(Compact.Loading)
+        try {
+            val result = api.material("Bearer ${token}", categoryId)
+            emit(Compact.Succes(result))
+        }catch (exc: Exception){
+            emit(Compact.Error(exc.message.toString()))
+        }
+    }
 }

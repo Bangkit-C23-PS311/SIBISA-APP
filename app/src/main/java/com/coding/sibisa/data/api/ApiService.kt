@@ -1,13 +1,10 @@
 package com.coding.sibisa.data.api
 
 import com.coding.sibisa.data.response.LoginResponse
+import com.coding.sibisa.data.response.MaterialResponse
 import com.coding.sibisa.data.response.ParamRegister
 import com.coding.sibisa.data.response.RegisterResponse
-import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -23,4 +20,10 @@ interface ApiService {
     suspend fun register(
         @Body req: ParamRegister
     ):RegisterResponse
+
+    @GET("category/{id}/material")
+    suspend fun material(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): MaterialResponse
 }

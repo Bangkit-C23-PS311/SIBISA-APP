@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.coding.sibisa.R
 
 class HurufAdapter(var context: Context) : RecyclerView.Adapter<HurufAdapter.ViewHolder>() {
@@ -15,6 +16,7 @@ class HurufAdapter(var context: Context) : RecyclerView.Adapter<HurufAdapter.Vie
 
     internal fun setDataList(dataList: List<HurufDataModel>){
         this.dataList = dataList
+        notifyDataSetChanged()
     }
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
@@ -38,7 +40,10 @@ class HurufAdapter(var context: Context) : RecyclerView.Adapter<HurufAdapter.Vie
         var data = dataList[position]
 
         holder.title.text = data.title
-        holder.image.setImageResource(data.image)
+        Glide.with(holder.itemView)
+            .load(data.image)
+            .centerCrop()
+            .into(holder.image)
     }
 
     override fun getItemCount() = dataList.size
