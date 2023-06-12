@@ -97,7 +97,6 @@ class Classifier(assetManager: AssetManager, modelPath: String, labelPath: Strin
         for (i in LABEL_LIST.indices) {
             val confidence = labelProbArray[0][i]
             if (confidence >= THRESHOLD) {
-                Log.d("Hoho", i.toString())
                 pq.add(Classifier.Recognition("" + i,
                     if (LABEL_LIST.size > i) LABEL_LIST[i] else "Unknown", confidence)
                 )

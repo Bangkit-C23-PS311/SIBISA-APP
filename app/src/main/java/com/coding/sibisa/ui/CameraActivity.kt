@@ -39,8 +39,12 @@ class CameraActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Initialize the Classifier
-        classifier = Classifier(assets, "model.tflite", "labels.txt", 224)
-        result = intent.getParcelableExtra<DataItemItem>(KONCIAN)!!
+        result = intent.getParcelableExtra<DataItemItem>(CameraActivity.KONCIAN)!!
+        if(result.categoryId == 1) {
+            classifier = Classifier(assets, "model.tflite", "labels.txt", 224)
+        } else {
+            classifier = Classifier(assets, "model-kata.tflite", "labels-kata.txt", 224)
+        }
         // Check camera permission
         if (allPermissionsGranted()) {
             Toast.makeText(this,
