@@ -6,7 +6,7 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.coding.sibisa.data.response.MaterialResponse
 import com.coding.sibisa.data.response.MyUser
-import com.coding.sibisa.repo.Repository
+import com.coding.sibisa.data.repo.Repository
 import kotlinx.coroutines.launch
 
 class MainVM(private val repo: Repository): ViewModel() {

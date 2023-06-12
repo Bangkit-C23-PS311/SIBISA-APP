@@ -1,4 +1,4 @@
-package com.coding.sibisa.auth
+package com.coding.sibisa.ui.auth
 
 import android.content.Intent
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.coding.sibisa.materi
+package com.coding.sibisa.ui.materi
 
 import android.content.Context
 import android.content.Intent

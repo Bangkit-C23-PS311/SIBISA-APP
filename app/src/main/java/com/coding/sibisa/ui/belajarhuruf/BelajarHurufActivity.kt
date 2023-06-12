@@ -15,8 +15,8 @@ import com.coding.sibisa.data.model.VMFactory
 import com.coding.sibisa.data.pref.Compact
 import com.coding.sibisa.data.response.DataItemItem
 import com.coding.sibisa.databinding.ActivityBelajarHurufBinding
-import com.coding.sibisa.materi.HurufAdapter
-import com.coding.sibisa.materi.HurufDataModel
+import com.coding.sibisa.ui.materi.HurufAdapter
+import com.coding.sibisa.ui.materi.HurufDataModel
 import com.coding.sibisa.ui.MainActivity
 
 class BelajarHurufActivity : AppCompatActivity() {

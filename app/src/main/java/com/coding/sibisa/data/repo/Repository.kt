@@ -1,4 +1,4 @@
-package com.coding.sibisa.repo
+package com.coding.sibisa.data.repo
 
 import android.util.Log
 import androidx.lifecycle.LiveData

@@ -3,8 +3,8 @@ package com.coding.sibisa.data.model
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.coding.sibisa.di.Injection
-import com.coding.sibisa.repo.Repository
+import com.coding.sibisa.data.di.Injection
+import com.coding.sibisa.data.repo.Repository
 
 class VMFactory(private val repo: Repository): ViewModelProvider.NewInstanceFactory()  {
 

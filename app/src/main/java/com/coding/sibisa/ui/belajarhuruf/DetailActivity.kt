@@ -1,10 +1,13 @@
 package com.coding.sibisa.ui.belajarhuruf
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import com.bumptech.glide.Glide
 import com.coding.sibisa.data.response.DataItemItem
 import com.coding.sibisa.databinding.ActivityDetailBinding
+import com.coding.sibisa.ui.CameraActivity
 
 
 class DetailActivity : AppCompatActivity() {
@@ -28,5 +31,12 @@ class DetailActivity : AppCompatActivity() {
             .load(result?.imageUrl)
             .fitCenter()
             .into(binding.ivDetail)
+
+        binding.btnDetail.setOnClickListener{
+            val intent = Intent(this, CameraActivity::class.java).apply {
+                putExtra(CameraActivity.KONCIAN, result as Parcelable)
+            }
+            startActivity(intent)
+        }
     }
 }

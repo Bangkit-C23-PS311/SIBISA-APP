@@ -8,7 +8,7 @@ import com.coding.sibisa.ui.fragment.FragmentAdapter
 import com.google.android.material.tabs.TabLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.coding.sibisa.auth.LoginActivity
+import com.coding.sibisa.ui.auth.LoginActivity
 import com.coding.sibisa.data.model.AuthVM
 import com.coding.sibisa.data.model.MainVM
 import com.coding.sibisa.data.model.VMFactory
