@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         tabLayout = findViewById(R.id.tab_layout)
         viewPager2 = findViewById(R.id.viewpager2)
         bottomBar = findViewById(R.id.bottom_navbar)

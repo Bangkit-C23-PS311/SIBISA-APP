@@ -20,6 +20,8 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         vmFactory = VMFactory.getInstance(this)
         authVM = ViewModelProvider(this, vmFactory)[AuthVM::class.java]
 

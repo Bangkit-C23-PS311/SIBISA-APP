@@ -21,6 +21,8 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+        supportActionBar?.hide()
+
         tabLayoutProfile = findViewById(R.id.tab_layout_profile)
         viewPager2Profile = findViewById(R.id.viewpager2_profile)
         backButton = findViewById(R.id.btn_back_profile)

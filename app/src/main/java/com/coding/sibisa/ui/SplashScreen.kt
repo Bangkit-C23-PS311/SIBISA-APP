@@ -23,6 +23,8 @@ class SplashScreen : AppCompatActivity() {
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         vmFactory = VMFactory.getInstance(this)
         mainVM = ViewModelProvider(this, vmFactory)[MainVM::class.java]
 

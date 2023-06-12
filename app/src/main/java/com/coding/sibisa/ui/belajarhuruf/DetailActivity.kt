@@ -21,6 +21,8 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         val result = intent.getParcelableExtra<DataItemItem>(KONCIAN)
 
         binding.apply {

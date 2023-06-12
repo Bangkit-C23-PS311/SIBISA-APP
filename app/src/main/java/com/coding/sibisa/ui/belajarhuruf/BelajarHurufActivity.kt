@@ -28,6 +28,7 @@ class BelajarHurufActivity : AppCompatActivity() {
     private lateinit var vmFactory: VMFactory
     private lateinit var mainVM: MainVM
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBelajarHurufBinding.inflate(layoutInflater)

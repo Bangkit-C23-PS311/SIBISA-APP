@@ -26,6 +26,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
+
         vmFactory = VMFactory.getInstance(this)
         authVM = ViewModelProvider(this, vmFactory)[AuthVM::class.java]
 
