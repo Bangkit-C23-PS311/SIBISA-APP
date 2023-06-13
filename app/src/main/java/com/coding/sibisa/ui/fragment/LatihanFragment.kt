@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import com.coding.sibisa.R
-import com.coding.sibisa.ui.LatihanActivity
+import com.coding.sibisa.ui.latihan.LatihanActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

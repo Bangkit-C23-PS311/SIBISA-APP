@@ -49,11 +49,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        mainVM.getMyUser().observe(this, {
-            if (it != null){
-                binding.usernameTextView.text = "Hello, ${it.name}"
-            }
-        })
 
         adapter = FragmentAdapter(supportFragmentManager, lifecycle)
         tabLayout.addTab(tabLayout.newTab().setText("Materi"))

@@ -70,4 +70,15 @@ class Repository(private val pref: UserPreference, private val api: ApiService) 
             emit(Compact.Error(exc.message.toString()))
         }
     }
+
+    fun getQustion(token: String, categoryId: Int): LiveData<Compact<QuestionResponse>> = liveData{
+        emit(Compact.Loading)
+        try {
+            val result = api.question("Bearer ${token}", categoryId)
+            emit(Compact.Succes(result))
+        }catch (exc: Exception){
+            emit(Compact.Error(exc.message.toString()))
+        }
+    }
+
 }

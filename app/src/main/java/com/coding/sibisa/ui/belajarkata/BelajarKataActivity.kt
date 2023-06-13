@@ -63,6 +63,7 @@ class BelajarKataActivity : AppCompatActivity() {
                             }
                             is Compact.Succes -> {
                                 val categoriesData = result.data
+                                dataList.clear()
                                 categoriesData.data?.forEach { dataItem ->
                                     val dataResponse: List<DataItemItem> =
                                         dataItem as List<DataItemItem>
@@ -90,12 +91,6 @@ class BelajarKataActivity : AppCompatActivity() {
         }
 
 
-//        dataList.add(HurufDataModel("A", R.drawable.ic_baseline_local_library_24))
-//        dataList.add(HurufDataModel("B", R.drawable.ic_baseline_local_library_24))
-//        dataList.add(HurufDataModel("C", R.drawable.ic_baseline_local_library_24))
-//        dataList.add(HurufDataModel("D", R.drawable.ic_baseline_local_library_24))
-//        dataList.add(HurufDataModel("E", R.drawable.ic_baseline_local_library_24))
-//        dataList.add(HurufDataModel("F", R.drawable.ic_baseline_local_library_24))
 
 
 

@@ -26,6 +26,9 @@ class VMFactory(private val repo: Repository): ViewModelProvider.NewInstanceFact
         if (modelClass.isAssignableFrom(MainVM::class.java)){
             return MainVM(repo) as T
         }
+        if(modelClass.isAssignableFrom(QuestionVM::class.java)){
+            return QuestionVM(repo) as T
+        }
 
         throw IllegalArgumentException("Unknown VM Class" + modelClass.simpleName)
     }

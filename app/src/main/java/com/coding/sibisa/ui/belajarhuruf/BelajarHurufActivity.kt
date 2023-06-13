@@ -59,6 +59,7 @@ class BelajarHurufActivity : AppCompatActivity() {
                         }
                         is Compact.Succes -> {
                             val categoriesData = result.data
+                            dataList.clear()
                             categoriesData.data?.forEach { dataItem ->
                                 val dataResponse: List<DataItemItem> =
                                     dataItem as List<DataItemItem>

@@ -1,9 +1,6 @@
 package com.coding.sibisa.data.api
 
-import com.coding.sibisa.data.response.LoginResponse
-import com.coding.sibisa.data.response.MaterialResponse
-import com.coding.sibisa.data.response.ParamRegister
-import com.coding.sibisa.data.response.RegisterResponse
+import com.coding.sibisa.data.response.*
 import retrofit2.http.*
 
 interface ApiService {
@@ -26,4 +23,10 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") id: Int
     ): MaterialResponse
+
+    @GET("practice/{id}/question")
+    suspend fun question(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): QuestionResponse
 }

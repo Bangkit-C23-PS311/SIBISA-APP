@@ -29,7 +29,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.LatihanActivity"
+            android:name=".ui.latihan.LatihanActivity"
             android:exported="false" />
         <activity
             android:name=".ui.belajarkata.BelajarKataActivity"

@@ -1,4 +1,4 @@
-package com.coding.sibisa.ui
+package com.coding.sibisa.ui.latihan
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -5,8 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.coding.sibisa.R
+import com.coding.sibisa.data.model.AuthVM
+import com.coding.sibisa.data.model.MainVM
+import com.coding.sibisa.data.model.VMFactory
+import com.coding.sibisa.databinding.ActivityProfileBinding
 import com.coding.sibisa.ui.fragment.FragmentAdapter
 import com.google.android.material.tabs.TabLayout
 
@@ -16,12 +21,24 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var viewPager2Profile: ViewPager2
     private lateinit var adapterProfile: FragmentAdapter
     private lateinit var backButton: Button
+    private lateinit var vmFactory: VMFactory
+    private lateinit var mainVM: MainVM
+    private lateinit var binding: ActivityProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
+        binding = ActivityProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        supportActionBar?.hide()
+        vmFactory = VMFactory.getInstance(this)
+        mainVM = ViewModelProvider(this, vmFactory)[MainVM::class.java]
+
+        mainVM.getMyUser().observe(this, {
+            if(it != null){
+                binding.profileUsername.text = "${it.name}"
+            }
+        })
+
 
         tabLayoutProfile = findViewById(R.id.tab_layout_profile)
         viewPager2Profile = findViewById(R.id.viewpager2_profile)
