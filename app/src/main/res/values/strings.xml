@@ -17,5 +17,6 @@
     <string name="latihan">Latihan</string>
     <string name="desc_latihan">Mulai Latihan bahasa isyarat Hari ini!</string>
     <string name="huruf">Huruf</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis, lorem sit amet laoreet pellentesque, orci diam ornare orci</string>
 
 </resources>

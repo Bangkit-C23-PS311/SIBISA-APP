@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.coding.sibisa.databinding.ActivityLatihanBinding
 
 class LatihanActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLatihanBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
