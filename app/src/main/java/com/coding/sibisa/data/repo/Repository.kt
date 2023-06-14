@@ -7,6 +7,8 @@ import androidx.lifecycle.liveData
 import com.coding.sibisa.data.api.ApiService
 import com.coding.sibisa.data.pref.Compact
 import com.coding.sibisa.data.pref.UserPreference
+import com.coding.sibisa.data.request.PostMateriRequest
+import com.coding.sibisa.data.request.PostPracticeRequest
 import com.coding.sibisa.data.response.*
 
 class Repository(private val pref: UserPreference, private val api: ApiService) {
@@ -79,6 +81,18 @@ class Repository(private val pref: UserPreference, private val api: ApiService) 
         }catch (exc: Exception){
             emit(Compact.Error(exc.message.toString()))
         }
+    }
+
+    suspend fun postDataProgressMaterial(token: String, materialId: Int): Int {
+        val requestBody = PostMateriRequest(materialId)
+        val response = api.postDataProgressMaterial("Bearer ${token}", requestBody)
+        return response.code()
+    }
+
+    suspend fun postDataProgressPractice(token: String, practiceId: Int, questionId: Int, answer: Boolean): Int {
+        val requestBody = PostPracticeRequest(answer, questionId, practiceId)
+        val response = api.postDataProgressPractice("Bearer ${token}", requestBody)
+        return response.code()
     }
 
 }

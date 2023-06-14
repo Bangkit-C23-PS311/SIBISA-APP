@@ -1,6 +1,10 @@
 package com.coding.sibisa.data.api
 
+import com.coding.sibisa.data.request.PostMateriRequest
+import com.coding.sibisa.data.request.PostPracticeRequest
 import com.coding.sibisa.data.response.*
+import okhttp3.ResponseBody
+import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiService {
@@ -29,4 +33,16 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") id: Int
     ): QuestionResponse
+
+    @POST("progress")
+    suspend fun postDataProgressMaterial(
+        @Header("Authorization") token: String,
+        @Body requestBody: PostMateriRequest
+    ) : Response<ResponseBody>
+
+    @POST("practice")
+    suspend fun postDataProgressPractice(
+        @Header("Authorization") token: String,
+        @Body requestBody: PostPracticeRequest
+    ) : Response<ResponseBody>
 }

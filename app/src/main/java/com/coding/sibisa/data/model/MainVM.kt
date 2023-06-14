@@ -1,10 +1,6 @@
 package com.coding.sibisa.data.model
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
-import androidx.lifecycle.viewModelScope
-import com.coding.sibisa.data.response.MaterialResponse
+import androidx.lifecycle.*
 import com.coding.sibisa.data.response.MyUser
 import com.coding.sibisa.data.repo.Repository
 import kotlinx.coroutines.launch
@@ -16,5 +12,16 @@ class MainVM(private val repo: Repository): ViewModel() {
     }
 
     fun getMaterial(myUser: MyUser, categoryId: Int) = repo.getMaterial(myUser.token, categoryId)
+
+    fun postDataProgressMaterial(token: String, materialId: Int) {
+        viewModelScope.launch {
+            repo.postDataProgressMaterial(token, materialId)
+        }
+    }
+    suspend fun postDataProgressPractice(token: String, practiceId: Int, questionId: Int, answer: Boolean) {
+        viewModelScope.launch {
+            repo.postDataProgressPractice(token, practiceId, questionId, answer)
+        }
+    }
 
 }

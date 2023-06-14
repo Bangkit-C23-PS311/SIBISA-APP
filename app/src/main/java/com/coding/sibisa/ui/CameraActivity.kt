@@ -17,12 +17,14 @@ import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.coding.sibisa.databinding.ActivityCameraBinding
 import com.coding.sibisa.tflite.Classifier
 import java.io.ByteArrayOutputStream
 import com.coding.sibisa.R
+import com.coding.sibisa.data.model.MainVM
+import com.coding.sibisa.data.model.VMFactory
 import com.coding.sibisa.data.response.DataItemItem
-import com.coding.sibisa.ui.belajarhuruf.DetailActivity
 
 class CameraActivity : AppCompatActivity() {
 
@@ -30,6 +32,8 @@ class CameraActivity : AppCompatActivity() {
     private val FILE_NAME_FORMAT = "yy-MM-dd-HH-mm-ss-SSS"
     private lateinit var classifier: Classifier
     private lateinit var binding: ActivityCameraBinding
+    private lateinit var vmFactory: VMFactory
+    private lateinit var mainVM: MainVM
 
     private var count: Int = 0
     private lateinit var result: DataItemItem
@@ -38,6 +42,9 @@ class CameraActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        vmFactory = VMFactory.getInstance(this)
+        mainVM = ViewModelProvider(this, vmFactory)[MainVM::class.java]
 
 
 
@@ -131,6 +138,11 @@ class CameraActivity : AppCompatActivity() {
                 if(count == 5) {
                     count = 0
                     showSuccessToast(this, "Anda Berhasil")
+                    mainVM.getMyUser().observe(this) {
+                        if (it != null) {
+                            mainVM.postDataProgressMaterial(it.token, result.id!!)
+                        }
+                    }
 
                     val handler = Handler(Looper.getMainLooper())
                     handler.postDelayed({
