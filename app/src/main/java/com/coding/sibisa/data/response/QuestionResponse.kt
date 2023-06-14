@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 data class QuestionResponse(
 
-	@field:SerializedName("list")
+	@field:SerializedName("data")
 	val data: List<List<DataItem>?>? = null,
 
 	@field:SerializedName("message")

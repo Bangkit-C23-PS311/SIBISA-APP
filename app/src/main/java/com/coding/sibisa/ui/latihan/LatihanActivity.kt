@@ -21,6 +21,7 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import com.coding.sibisa.R
 import androidx.lifecycle.ViewModelProvider
 import com.coding.sibisa.data.model.QuestionVM
@@ -42,11 +43,10 @@ class LatihanActivity : AppCompatActivity() {
     private lateinit var classifier: Classifier
     private lateinit var binding: ActivityLatihanBinding
     private var count: Int = 0
-    private var dataListtt = mutableListOf<DataItem>()
+    private var soalNumber: Int = 0
+    private var soalList = mutableListOf<DataItem>()
     private lateinit var questionVM: QuestionVM
     private lateinit var vmFactory: VMFactory
-
-    private lateinit var result: DataItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,36 +59,40 @@ class LatihanActivity : AppCompatActivity() {
 
         vmFactory = VMFactory.getInstance(this)
         questionVM = ViewModelProvider(this, vmFactory)[QuestionVM::class.java]
-        questionVM.getMyUser().observe(this, {myUser ->
-            val token = "Bearer ${myUser.token}"
-            questionVM.getQuest(token, practiceId).observe(this, {result ->
-                Log.d("GetQuest", "${result}")
-                when(result){
-                    is Compact.Loading -> {
-                        Log.d(TAG, "Loading")
-                    }
-                    is Compact.Succes -> {
-                        val questionResponse = result.data
-                       questionResponse.data?.forEach{questionList ->
-                           val dataResponse: List<DataItem> = questionList as List<DataItem>
-//                           dataListtt.add(questionList)
+        questionVM.getMyUser().observe(this, Observer { myUser ->
+            questionVM.getQuest(myUser.token, practiceId).observe(this) { result ->
+                if (result != null) {
+                    when (result) {
+                        is Compact.Loading -> {
+                            Log.d("Loading", "...")
+                        }
+                        is Compact.Succes -> {
+                            val questionData = result.data
+                            questionData.data?.forEach { dataItem ->
+                                val dataResponse: List<DataItem> =
+                                    dataItem as List<DataItem>
 
-                       }
-                    }
-                    is Compact.Error -> {
-                        Log.d(TAG, "ERRRORR")
+                                dataResponse.forEach { dataItem ->
+                                    soalList.add(dataItem)
+                                }
+
+                                binding.judul.text = "Latihan ${soalNumber + 1}"
+                                binding.keterangan.text = soalList[soalNumber].question
+                            }
+                        }
+                        is Compact.Error -> {
+                            val errorMessage = result.error
+                            Log.d("LatihanActivity", "error: $errorMessage")
+                        }
                     }
                 }
-
-            })
+            }
         })
 
 
 
         // Initialize the Classifier
-        result = DataItem()
-        Log.d("Ngecek Latihan", "${result.id}")
-        if(result.id == 7) {
+        if(practiceId == 1) {
             classifier = Classifier(assets, "model.tflite", "labels.txt", 224)
         } else {
             classifier = Classifier(assets, "model-kata.tflite", "labels-kata.txt", 224)
@@ -178,18 +182,23 @@ class LatihanActivity : AppCompatActivity() {
     private fun processResults(results: List<Classifier.Recognition>) {
         if (results.isNotEmpty()) {
             Log.d("Predict", results[0].title)
-            if(results[0].title == result.question) {
-                count++
-                if(count == 5) {
-                    count = 0
-                    showSuccessToast(this, "Anda Berhasil")
+            if(soalList.isNotEmpty()) {
+                if(results[0].title == soalList[soalNumber].answer) {
+                    count++
+                    if(count == 5) {
+                        count = 0
+                        showSuccessToast(this, "Jawaban Benar")
 
-                    val handler = Handler(Looper.getMainLooper())
-                    handler.postDelayed({
-                        finish()
-                    }, 500)
+                        val handler = Handler(Looper.getMainLooper())
+                        handler.postDelayed({
+                            soalNumber++
+                            binding.judul.text = "Latihan ${soalNumber + 1}"
+                            binding.keterangan.text = soalList[soalNumber].question
+                        }, 500)
+                    }
                 }
             }
+
         } else {
             Log.d(TAG, "No classification results available.")
         }
