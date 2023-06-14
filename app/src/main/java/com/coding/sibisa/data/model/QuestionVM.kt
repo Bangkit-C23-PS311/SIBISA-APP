@@ -11,5 +11,5 @@ class QuestionVM(private val repo: Repository): ViewModel() {
         return repo.myUser()
     }
 
-    fun getQuest(myUser: MyUser, categoryId: Int) = repo.getQustion(myUser.token, categoryId)
+    fun getQuest(token: String, categoryId: Int) = repo.getQustion(token, categoryId)
 }

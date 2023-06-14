@@ -22,7 +22,6 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
         val result = intent.getParcelableExtra<DataItemItem>(KONCIAN)
 
         binding.apply {
@@ -34,11 +33,12 @@ class DetailActivity : AppCompatActivity() {
             .fitCenter()
             .into(binding.ivDetail)
 
-        binding.btnDetail.setOnClickListener{
+        binding.btnDetail.setOnClickListener {
             val intent = Intent(this, CameraActivity::class.java).apply {
                 putExtra(CameraActivity.KONCIAN, result as Parcelable)
             }
             startActivity(intent)
         }
+
     }
 }

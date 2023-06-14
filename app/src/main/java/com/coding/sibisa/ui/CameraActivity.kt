@@ -30,6 +30,7 @@ class CameraActivity : AppCompatActivity() {
     private val FILE_NAME_FORMAT = "yy-MM-dd-HH-mm-ss-SSS"
     private lateinit var classifier: Classifier
     private lateinit var binding: ActivityCameraBinding
+
     private var count: Int = 0
     private lateinit var result: DataItemItem
 

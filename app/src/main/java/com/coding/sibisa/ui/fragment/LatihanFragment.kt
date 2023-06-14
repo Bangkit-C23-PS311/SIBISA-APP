@@ -52,6 +52,7 @@ class LatihanFragment : Fragment() {
 
         cvLatihan?.setOnClickListener {
             val intent = Intent(requireContext(), LatihanActivity::class.java)
+            intent.putExtra("itemId", 1)
             startActivity(intent)
 
         }

@@ -21,6 +21,11 @@ import com.coding.sibisa.ui.MainActivity
 
 class BelajarHurufActivity : AppCompatActivity() {
 
+    companion object {
+        private const val TAG = "CameraActivity"
+        const val KONCIAN = "INIKONCIANBROOOK"
+    }
+
     private lateinit var binding: ActivityBelajarHurufBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var hurufAdapter: HurufAdapter
@@ -85,13 +90,6 @@ class BelajarHurufActivity : AppCompatActivity() {
             }
         })
 
-
-//        dataList.add(HurufDataModel("A", R.drawable.ic_baseline_local_library_24))
-//        dataList.add(HurufDataModel("B", R.drawable.ic_baseline_local_library_24))
-//        dataList.add(HurufDataModel("C", R.drawable.ic_baseline_local_library_24))
-//        dataList.add(HurufDataModel("D", R.drawable.ic_baseline_local_library_24))
-//        dataList.add(HurufDataModel("E", R.drawable.ic_baseline_local_library_24))
-//        dataList.add(HurufDataModel("F", R.drawable.ic_baseline_local_library_24))
 
 
 
