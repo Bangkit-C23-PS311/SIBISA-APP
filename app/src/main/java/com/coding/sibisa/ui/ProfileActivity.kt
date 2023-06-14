@@ -13,13 +13,14 @@ import com.coding.sibisa.data.model.MainVM
 import com.coding.sibisa.data.model.VMFactory
 import com.coding.sibisa.databinding.ActivityProfileBinding
 import com.coding.sibisa.ui.fragment.FragmentAdapter
+import com.coding.sibisa.ui.fragment.FragmentAdapterProfile
 import com.google.android.material.tabs.TabLayout
 
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var tabLayoutProfile: TabLayout
     private lateinit var viewPager2Profile: ViewPager2
-    private lateinit var adapterProfile: FragmentAdapter
+    private lateinit var adapterProfile: FragmentAdapterProfile
     private lateinit var backButton: Button
     private lateinit var vmFactory: VMFactory
     private lateinit var mainVM: MainVM
@@ -43,7 +44,7 @@ class ProfileActivity : AppCompatActivity() {
         tabLayoutProfile = findViewById(R.id.tab_layout_profile)
         viewPager2Profile = findViewById(R.id.viewpager2_profile)
         backButton = findViewById(R.id.btn_back_profile)
-        adapterProfile = FragmentAdapter(supportFragmentManager, lifecycle)
+        adapterProfile = FragmentAdapterProfile(supportFragmentManager, lifecycle)
 
         tabLayoutProfile.addTab(tabLayoutProfile.newTab().setText("Progres Belajar"))
         tabLayoutProfile.addTab(tabLayoutProfile.newTab().setText("Profil"))

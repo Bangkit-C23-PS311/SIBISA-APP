@@ -18,5 +18,11 @@
     <string name="desc_latihan">Mulai Latihan bahasa isyarat Hari ini!</string>
     <string name="huruf">Huruf</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis, lorem sit amet laoreet pellentesque, orci diam ornare orci</string>
+    <string name="maribelajar">Mari Belajar Bahasa Isyarat</string>
+    <string name="splash_screen">splash_screen</string>
+    <string name="progress_belajar_kata">Belajar Kata :</string>
+    <string name="progress_belajar_huruf">Belajar Huruf :</string>
+    <string name="nama">Nama :</string>
+    <string name="username">Username :</string>
 
 </resources>
