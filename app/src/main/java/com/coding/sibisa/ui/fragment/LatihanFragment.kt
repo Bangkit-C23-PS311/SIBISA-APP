@@ -1,11 +1,16 @@
 package com.coding.sibisa.ui.fragment
 
+import android.app.Activity
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import com.coding.sibisa.R
 import com.coding.sibisa.ui.latihan.LatihanActivity
@@ -53,9 +58,40 @@ class LatihanFragment : Fragment() {
         cvLatihan?.setOnClickListener {
             val intent = Intent(requireContext(), LatihanActivity::class.java)
             intent.putExtra("itemId", 1)
-            startActivity(intent)
+            startActivityForResult(intent, 123)
 
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 123 && resultCode == Activity.RESULT_OK) {
+            val message = data?.getStringExtra("message")
+            // Use the message here, for example, Log.d()
+            showConfirmationDialog(requireContext(), message!!) {
+                Log.d("TAG", "Received message: $message")
+            }
+
+        }
+    }
+
+    private fun showConfirmationDialog(context: Context, message: String, positiveAction: () -> Unit) {
+        val alertDialogBuilder = AlertDialog.Builder(context)
+
+        // Set the message for the dialog
+        alertDialogBuilder.setMessage(message)
+
+        // Set the positive button and its click listener
+        alertDialogBuilder.setPositiveButton("OK") { dialog: DialogInterface, _: Int ->
+            // Call the positive action callback when the user clicks OK
+            positiveAction.invoke()
+            dialog.dismiss() // Close the dialog
+        }
+
+        // Create and show the dialog
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
     }
 
     companion object {

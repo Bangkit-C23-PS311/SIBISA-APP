@@ -232,10 +232,10 @@ class LatihanActivity : AppCompatActivity() {
 
     private fun processResults(results: List<Classifier.Recognition>) {
         if (soalNumber > 4){
-            val resultIntent = Intent()
-            resultIntent.putExtra("message", "Selamat Anda Telah Menyelesaikan Latihan!." +
+            val intent = Intent()
+            intent.putExtra("message", "Selamat Anda Telah Menyelesaikan Latihan!." +
                     "Nilai dapat di cek di Halaman Progres Belajar")
-            setResult(Activity.RESULT_OK, resultIntent)
+            setResult(Activity.RESULT_OK, intent)
             finish()
         }else {
             if (results.isNotEmpty()) {
@@ -289,24 +289,6 @@ class LatihanActivity : AppCompatActivity() {
             return null
         val imageBytes: ByteArray = out.toByteArray()
         return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-    }
-
-    private fun showConfirmationDialog(context: Context, message: String, positiveAction: () -> Unit) {
-        val alertDialogBuilder = AlertDialog.Builder(context)
-
-        // Set the message for the dialog
-        alertDialogBuilder.setMessage(message)
-
-        // Set the positive button and its click listener
-        alertDialogBuilder.setPositiveButton("OK") { dialog: DialogInterface, _: Int ->
-            // Call the positive action callback when the user clicks OK
-            positiveAction.invoke()
-            dialog.dismiss() // Close the dialog
-        }
-
-        // Create and show the dialog
-        val alertDialog = alertDialogBuilder.create()
-        alertDialog.show()
     }
 
     private fun yuv420888ToNv21(image: ImageProxy): ByteArray {
