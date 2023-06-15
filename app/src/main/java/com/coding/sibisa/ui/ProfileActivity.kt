@@ -49,6 +49,8 @@ class ProfileActivity : AppCompatActivity() {
         tabLayoutProfile.addTab(tabLayoutProfile.newTab().setText("Progres Belajar"))
         tabLayoutProfile.addTab(tabLayoutProfile.newTab().setText("Profil"))
 
+        viewPager2Profile.adapter = adapterProfile
+
         tabLayoutProfile.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab != null) {

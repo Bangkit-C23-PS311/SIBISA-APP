@@ -18,10 +18,12 @@ class MainVM(private val repo: Repository): ViewModel() {
             repo.postDataProgressMaterial(token, materialId)
         }
     }
-    suspend fun postDataProgressPractice(token: String, practiceId: Int, questionId: Int, answer: Boolean) {
+    fun postDataProgressPractice(token: String, practiceId: Int, questionId: Int, answer: Boolean) {
         viewModelScope.launch {
             repo.postDataProgressPractice(token, practiceId, questionId, answer)
         }
     }
+
+    fun getProgress(myUser: MyUser) = repo.getProgress(myUser.token)
 
 }

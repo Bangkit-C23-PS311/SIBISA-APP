@@ -5,7 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.coding.sibisa.R
+import com.coding.sibisa.data.model.AuthVM
+import com.coding.sibisa.data.model.MainVM
+import com.coding.sibisa.data.model.VMFactory
+import com.coding.sibisa.databinding.FragmentInfoBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +26,9 @@ class InfoFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var binding : FragmentInfoBinding
+    private lateinit var mainView: MainVM
+    private lateinit var vmFactory: VMFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +44,23 @@ class InfoFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_info, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding = FragmentInfoBinding.bind(view)
+
+        vmFactory = VMFactory.getInstanceFragment(this)
+        mainView = ViewModelProvider(this, vmFactory)[MainVM::class.java]
+
+        mainView.getMyUser().observe(viewLifecycleOwner , {
+            if (it != null){
+                binding.tvBelajarHuruf.text = "Username : ${it.name}"
+            }
+        })
+
+
     }
 
     companion object {

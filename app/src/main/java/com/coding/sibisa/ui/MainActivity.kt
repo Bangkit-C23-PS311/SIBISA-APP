@@ -1,7 +1,9 @@
 package com.coding.sibisa.ui
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.viewpager2.widget.ViewPager2
 import com.coding.sibisa.R
 import com.coding.sibisa.ui.fragment.FragmentAdapter
@@ -12,6 +14,8 @@ import com.coding.sibisa.ui.auth.LoginActivity
 import com.coding.sibisa.data.model.AuthVM
 import com.coding.sibisa.data.model.MainVM
 import com.coding.sibisa.data.model.VMFactory
+import com.coding.sibisa.data.pref.Compact
+import com.coding.sibisa.data.response.DataItemItem
 import com.coding.sibisa.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -42,6 +46,12 @@ class MainActivity : AppCompatActivity() {
         vmFactory = VMFactory.getInstance(this)
         authVM = ViewModelProvider(this, vmFactory)[AuthVM::class.java]
         mainVM = ViewModelProvider(this, vmFactory)[MainVM::class.java]
+
+//        mainVM.getMyUser().observe(this) {
+//            if (it != null) {
+//                mainVM.postDataProgressPractice(it.token, 1, 2, true)
+//            }
+//        }
 
         mainVM.getMyUser().observe(this) {
             if (it != null) {
@@ -102,6 +112,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK) {
+            val receivedData = data?.getStringExtra("key") // Replace "key" with the key you used in the previous activity
+            Log.d("TAGGG", "${receivedData}")
+            // Use the received data as needed
+        }
+    }
+
 
     private fun logout() {
         binding.logoutButton.setOnClickListener {
@@ -110,6 +130,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    companion object {
+        const val YOUR_REQUEST_CODE = 1
     }
 }
 

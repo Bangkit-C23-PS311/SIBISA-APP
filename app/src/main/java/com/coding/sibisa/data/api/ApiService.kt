@@ -45,4 +45,10 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body requestBody: PostPracticeRequest
     ) : Response<ResponseBody>
+
+    @GET("progress")
+    suspend fun progress(
+        @Header("Authorization") token: String,
+    ): ProgressResponse
+
 }

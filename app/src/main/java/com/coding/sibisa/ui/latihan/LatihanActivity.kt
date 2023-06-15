@@ -1,12 +1,15 @@
 package com.coding.sibisa.ui.latihan
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -14,6 +17,7 @@ import android.util.Size
 import android.view.LayoutInflater
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
@@ -24,15 +28,13 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.coding.sibisa.R
 import androidx.lifecycle.ViewModelProvider
+import com.coding.sibisa.data.model.MainVM
 import com.coding.sibisa.data.model.QuestionVM
 import com.coding.sibisa.data.model.VMFactory
 import com.coding.sibisa.data.pref.Compact
-import com.coding.sibisa.data.repo.Repository
 import com.coding.sibisa.data.response.DataItem
-import com.coding.sibisa.data.response.DataItemItem
 import com.coding.sibisa.databinding.ActivityLatihanBinding
 import com.coding.sibisa.tflite.Classifier
-import com.coding.sibisa.ui.CameraActivity
 import com.coding.sibisa.ui.MainActivity
 import java.io.ByteArrayOutputStream
 
@@ -47,6 +49,8 @@ class LatihanActivity : AppCompatActivity() {
     private var soalList = mutableListOf<DataItem>()
     private lateinit var questionVM: QuestionVM
     private lateinit var vmFactory: VMFactory
+    private lateinit var  mainVM: MainVM
+    private lateinit var countDownTimer: CountDownTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,9 +59,38 @@ class LatihanActivity : AppCompatActivity() {
 
         val practiceId: Int = 1
 
+
+
+
+        countDownTimer = object : CountDownTimer(10000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val secondsRemaining = millisUntilFinished / 1000
+                binding.countdownTextView.text = secondsRemaining.toString()
+            }
+
+
+            override fun onFinish() {
+                postLatihan()
+                startCountdown()
+                soalNumber++
+                if (soalNumber < 5) {
+                    binding.judul.text = "Latihan ${soalNumber + 1}"
+                    binding.keterangan.text = soalList[soalNumber].question
+                }
+            }
+        }
+
+        countDownTimer.start()
+
+
+
+
+
+
         backToHome()
 
         vmFactory = VMFactory.getInstance(this)
+        mainVM = ViewModelProvider(this, vmFactory)[MainVM::class.java]
         questionVM = ViewModelProvider(this, vmFactory)[QuestionVM::class.java]
         questionVM.getMyUser().observe(this, Observer { myUser ->
             questionVM.getQuest(myUser.token, practiceId).observe(this) { result ->
@@ -117,6 +150,24 @@ class LatihanActivity : AppCompatActivity() {
         }
     }
 
+    private fun postLatihan(){
+        mainVM.getMyUser().observe(this) {
+            if (it != null) {
+                mainVM.postDataProgressPractice(it.token, soalList[soalNumber].practiceId!!, soalList[soalNumber].id!!, false)
+
+            }
+        }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        countDownTimer.cancel()
+    }
+
+    private fun startCountdown() {
+        countDownTimer.cancel()
+        countDownTimer.start()
+    }
+
     fun showSuccessToast(context: Context, message: String) {
         val inflater = context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val layout = inflater.inflate(R.layout.toast_success, null)
@@ -148,7 +199,7 @@ class LatihanActivity : AppCompatActivity() {
             // Set up the ImageAnalysis use case to process camera frames
             val imageAnalysis = ImageAnalysis.Builder()
                 .setTargetResolution(Size(224, 224))
-                .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+//                .setBackpressureStrategy(ImageAnalysis.BackpressureStrategy.STRATEGY_KEEP_ONLY_LATEST)
                 .build()
                 .also {
                     it.setAnalyzer(ContextCompat.getMainExecutor(this)) { imageProxy ->
@@ -180,29 +231,51 @@ class LatihanActivity : AppCompatActivity() {
     }
 
     private fun processResults(results: List<Classifier.Recognition>) {
-        if (results.isNotEmpty()) {
-            Log.d("Predict", results[0].title)
-            if(soalList.isNotEmpty()) {
-                if(results[0].title == soalList[soalNumber].answer) {
-                    count++
-                    if(count == 5) {
-                        count = 0
-                        showSuccessToast(this, "Jawaban Benar")
+        if (soalNumber > 4){
+            val resultIntent = Intent()
+            resultIntent.putExtra("message", "Selamat Anda Telah Menyelesaikan Latihan!." +
+                    "Nilai dapat di cek di Halaman Progres Belajar")
+            setResult(Activity.RESULT_OK, resultIntent)
+            finish()
+        }else {
+            if (results.isNotEmpty()) {
+                Log.d("Predict", results[0].title)
+                if (soalList.isNotEmpty()) {
+                    if (soalNumber < 5 && results[0].title == soalList[soalNumber].answer) {
+                        count++
+                        if (count == 5) {
+                            count = 0
+                            showSuccessToast(this, "Jawaban Benar")
+                            mainVM.getMyUser().observe(this) {
+                                if (it != null) {
+                                    mainVM.postDataProgressPractice(
+                                        it.token,
+                                        soalList[soalNumber].practiceId!!,
+                                        soalList[soalNumber].id!!,
+                                        true
+                                    )
+                                }
+                            }
 
-                        val handler = Handler(Looper.getMainLooper())
-                        handler.postDelayed({
-                            soalNumber++
-                            binding.judul.text = "Latihan ${soalNumber + 1}"
-                            binding.keterangan.text = soalList[soalNumber].question
-                        }, 500)
+                            if (soalNumber < 4) {
+                                soalNumber++
+                                startCountdown()
+                                binding.judul.text = "Latihan ${soalNumber + 1}"
+                                binding.keterangan.text = soalList[soalNumber].question
+
+                            }
+                        }
                     }
                 }
-            }
 
-        } else {
-            Log.d(TAG, "No classification results available.")
+            } else {
+                Log.d(TAG, "No classification results available.")
+            }
         }
+
     }
+
+
 
     private fun ImageProxy.toBitmap(): Bitmap? {
         val nv21 = yuv420888ToNv21(this)
@@ -216,6 +289,24 @@ class LatihanActivity : AppCompatActivity() {
             return null
         val imageBytes: ByteArray = out.toByteArray()
         return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+    }
+
+    private fun showConfirmationDialog(context: Context, message: String, positiveAction: () -> Unit) {
+        val alertDialogBuilder = AlertDialog.Builder(context)
+
+        // Set the message for the dialog
+        alertDialogBuilder.setMessage(message)
+
+        // Set the positive button and its click listener
+        alertDialogBuilder.setPositiveButton("OK") { dialog: DialogInterface, _: Int ->
+            // Call the positive action callback when the user clicks OK
+            positiveAction.invoke()
+            dialog.dismiss() // Close the dialog
+        }
+
+        // Create and show the dialog
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
     }
 
     private fun yuv420888ToNv21(image: ImageProxy): ByteArray {

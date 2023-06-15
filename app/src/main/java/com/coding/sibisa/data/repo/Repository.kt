@@ -11,6 +11,7 @@ import com.coding.sibisa.data.request.PostMateriRequest
 import com.coding.sibisa.data.request.PostPracticeRequest
 import com.coding.sibisa.data.response.*
 
+
 class Repository(private val pref: UserPreference, private val api: ApiService) {
     companion object {
         const val TAG = "INIREPO"
@@ -92,7 +93,18 @@ class Repository(private val pref: UserPreference, private val api: ApiService) 
     suspend fun postDataProgressPractice(token: String, practiceId: Int, questionId: Int, answer: Boolean): Int {
         val requestBody = PostPracticeRequest(answer, questionId, practiceId)
         val response = api.postDataProgressPractice("Bearer ${token}", requestBody)
+        Log.d("response", "${response.code()}")
         return response.code()
+    }
+
+    fun getProgress(token: String): LiveData<Compact<ProgressResponse>> = liveData{
+        emit(Compact.Loading)
+        try {
+            val result = api.progress("Bearer ${token}")
+            emit(Compact.Succes(result))
+        }catch (exc: Exception){
+            emit(Compact.Error(exc.message.toString()))
+        }
     }
 
 }
