@@ -72,7 +72,7 @@ class ProgressFragment : Fragment() {
 
                             binding.tvBelajarHuruf.text = "Belajar Huruf : ${progresMateriHuruf}"
                             binding.tvBelajarKata.text = "Belajar Kata : ${progresMateriKata}"
-                            binding.tvLatihan1.text = "Latihan 1 : ${progresLatihan1}"
+                            binding.tvLatihan1.text = "Nilai Latihan 1 : ${progresLatihan1}"
 
                         }
                         is Compact.Error -> {
